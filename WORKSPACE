@@ -46,6 +46,13 @@ container_pull(
     tag = "11",
 )
 
+container_pull(
+    name = "java11_debug_base",
+    registry = "gcr.io",
+    repository = "distroless/java",
+    tag = "11-debug",
+)
+
 # buildfarm
 BUILDFARM_EXTERNAL_COMMIT = "d425fd18a7b712d631085c7c8e4a0198d5afb770"
 BUILDFARM_EXTERNAL_SHA256 = "696a72ee1c01e052dd4d2fb7832c033cf89dd6855441ce7b40c110f086ffa1c2"

@@ -4,9 +4,9 @@ services:
     image: bazel/server:server.container
     ports:
       - "8980:8980"
-    environment:
-      - USER=areddy
+    privileged: true
   worker:
     image: bazel/worker:worker.container
-    environment:
-      - USER=areddy
+    depends_on:
+      - "server"
+    privileged: true

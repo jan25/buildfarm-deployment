@@ -7,8 +7,7 @@ container_image(
     cmd = [
         "buildfarm-server_deploy.jar",
         "/server.config",
-        "--public_name",
-        "bf-server"
+        # "--jvm_flag=-Djava.util.logging.config.file=/debug.logging.properties"
     ],
     # leverage the implicit target of the buildfarm-server to get a fat jar.
     # this is simply a workaround for the fact that we have so many dependencies,
@@ -16,7 +15,8 @@ container_image(
     # https://docs.bazel.build/versions/master/be/java.html#java_binary_implicit_outputs
     files = [
         "@build_buildfarm//src/main/java/build/buildfarm:buildfarm-server_deploy.jar",
-        ":server.config"
+        ":server.config",
+        ":debug.logging.properties",
     ],
     ports = [
         "8980",

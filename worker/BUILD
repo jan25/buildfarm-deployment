@@ -3,10 +3,11 @@ load("@io_bazel_rules_docker//contrib:test.bzl", "container_test")
 
 container_image(
     name = "worker.container",
-    base = "@java11_base//image",
+    # base = "@java11_base//image",
+    base = "@java11_debug_base//image",
     cmd = [
         "buildfarm-operationqueue-worker_deploy.jar",
-        "/worker.config"
+        "/worker.config",
     ],
     # leverage the implicit target of the buildfarm-operationqueue-worker to get a fat jar.
     # this is simply a workaround for the fact that we have so many dependencies,
@@ -14,7 +15,8 @@ container_image(
     # https://docs.bazel.build/versions/master/be/java.html#java_binary_implicit_outputs
     files = [
         "@build_buildfarm//src/main/java/build/buildfarm:buildfarm-operationqueue-worker_deploy.jar",
-        ":worker.config"
+        ":worker.config",
+        ":debug.logging.properties",
     ],
     tags = ["container"],
     visibility = ["//visibility:public"],
