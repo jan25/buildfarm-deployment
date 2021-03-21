@@ -11,4 +11,11 @@ sh_binary(
 go_binary(
     name = "hello",
     srcs = ["main.go"],
+    goarch = "amd64",
+    goos = "linux",
+)
+
+cc_binary(
+    name = "main",
+    srcs = ["main.cc"],
 )
