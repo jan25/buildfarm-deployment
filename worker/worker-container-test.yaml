@@ -1,0 +1,16 @@
+schemaVersion: 2.0.0
+
+metadataTest:
+  cmd: ["buildfarm-operationqueue-worker_deploy.jar", "/worker.config"]
+  entrypoint: ["/usr/bin/java", "-jar"]
+
+fileExistenceTests:
+- name: "worker config file"
+  path: "/worker.config"
+  shouldExist: true
+  permissions: "-r-xr-xr-x"
+
+- name: "worker jar"
+  path: "/buildfarm-operationqueue-worker_deploy.jar"
+  shouldExist: true
+  permissions: "-r-xr-xr-x"
