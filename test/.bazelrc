@@ -1,2 +1,2 @@
-run --remote_cache=grpc://localhost:8980
-run --remote_executor=grpc://localhost:8980
+run --remote_cache=grpc://server:8980
+run --remote_executor=grpc://server:8980
